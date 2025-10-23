@@ -86,4 +86,16 @@
     --btn-shadow-disabled: #7bb1b5;
     --btn-color-disabled: #6d8f91;
   }
+
+  &.active {
+    height: rem(54);
+    width: rem(131);
+    @include flex-shrink(0);
+    background-color: var(--clr-neutral-300);
+
+    svg path {
+      stroke: var(--clr-neutral-500);
+      fill: var(--clr-neutral-500);
+    }
+  }
 }

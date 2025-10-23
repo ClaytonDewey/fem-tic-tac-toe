@@ -12,8 +12,8 @@ const StartScreen = () => {
             <Icon name='X' />
             <span className='sr-only'>X</span>
           </Button>
-          <Button className='btn'>
-            <Icon name='O' />
+          <Button className='btn active'>
+            <Icon name='o-outline' />
             <span className='sr-only'>O</span>
           </Button>
         </div>
