@@ -1,0 +1,34 @@
+@use '../util' as *;
+
+.btn {
+  cursor: pointer;
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  background: none;
+  text-decoration: none;
+  font-size: inherit;
+  transition: var(--transition);
+  border-radius: rem(15);
+  border: none;
+  color: inherit;
+  height: rem(56);
+  width: 90%;
+  text-transform: uppercase;
+
+  &-yellow {
+    background-color: var(--clr-yellow-500);
+    color: var(--clr-neutral-700);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-md);
+    box-shadow: 0 8px 0 0 #cc8b13;
+  }
+
+  &-blue {
+    background-color: var(--clr-blue-500);
+    color: var(--clr-neutral-700);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-md);
+    box-shadow: 0 8px 0 0 #118c87;
+  }
+}

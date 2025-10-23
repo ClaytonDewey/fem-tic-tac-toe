@@ -5,10 +5,19 @@
 @use 'base';
 
 // Components
-// @use 'components';
+@use 'components';
 
 // Layout
 // @use 'layout';
 
 // Pages
 // @use 'pages';
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+  height: 100vh;
+}
