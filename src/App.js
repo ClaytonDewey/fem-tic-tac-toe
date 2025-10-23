@@ -3,8 +3,8 @@ import { Button } from './components';
 function App() {
   return (
     <div className='App'>
-      <Button className='btn btn-yellow'>Button 1</Button>
-      <Button className='btn btn-blue'>Button 2</Button>
+      <Button className='btn btn-yellow'>New Game (vs CPU)</Button>
+      <Button className='btn btn-blue'>New Game (vs Player)</Button>
     </div>
   );
 }
