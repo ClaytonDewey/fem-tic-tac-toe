@@ -1,0 +1,31 @@
+@use '../util' as *;
+
+:root {
+  // Colors
+  --clr-black: #000;
+  --clr-white: #fff;
+
+  --clr-blue-500: #31c3bd;
+  --clr-blue-300: #65e9e4;
+
+  --clr-yellow-500: #f2b137;
+  --clr-yellow-300: #ffc860;
+
+  // Neutral
+  --clr-neutral-700: #1a2a33;
+  --clr-neutral-500: #1f3641;
+  --clr-neutral-300: #a8bfc9;
+  --clr-neutral-100: #dbe8ed;
+
+  // Typography
+  --ff-primary: 'Outfit', sans-serif;
+
+  --fs-2xlg: #{rem(40)};
+  --fs-xlg: #{rem(24)};
+  --fs-lg: #{rem(20)};
+  --fs-md: #{rem(16)};
+  --fs-sm: #{rem(14)};
+
+  --fw-bold: 700;
+  --fw-md: 500;
+}
