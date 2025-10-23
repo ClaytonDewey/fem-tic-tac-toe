@@ -1,0 +1,45 @@
+@use '../util' as *;
+
+.card {
+  @include flexbox;
+  @include flex-direction(column);
+  @include align-items(center);
+  gap: rem(24);
+  background-color: var(--clr-neutral-500);
+  border-radius: rem(15);
+  height: rem(205);
+  width: 100%;
+  padding: rem(24);
+  text-transform: uppercase;
+  text-align: center;
+
+  h1 {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    letter-spacing: rem(1);
+  }
+
+  p {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-md);
+    letter-spacing: rem(0.88);
+  }
+
+  .btn-container {
+    @include flexbox;
+    @include align-items(center);
+    background-color: var(--clr-neutral-700);
+    color: var(--clr-neutral-300);
+    height: rem(72);
+    width: 100%;
+    border-radius: rem(10);
+
+    svg {
+      height: rem(32);
+      fill: var(--clr-neutral-300);
+      // path {
+      //   stroke: rebeccapurple;
+      // }
+    }
+  }
+}

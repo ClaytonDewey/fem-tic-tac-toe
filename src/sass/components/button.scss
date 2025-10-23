@@ -9,11 +9,11 @@
   text-decoration: none;
   font-size: inherit;
   transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
-  border-radius: rem(15); /* rem(15) */
+  border-radius: rem(15);
   border: none;
   color: inherit;
-  height: rem(48); /* rem(48) */
-  width: rem(327); /* rem(327) */
+  height: rem(48);
+  width: 100%;
   text-transform: uppercase;
 
   /* Default values (overridden per variant) */
