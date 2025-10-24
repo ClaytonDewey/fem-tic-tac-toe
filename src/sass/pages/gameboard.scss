@@ -1,0 +1,15 @@
+@use '../util' as *;
+
+.game {
+  &__board {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity var(--fade-duration) var(--fade-ease),
+      transform var(--fade-duration) var(--fade-ease);
+
+    &.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

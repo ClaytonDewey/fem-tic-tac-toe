@@ -1,4 +1,6 @@
+import { GameBoard } from '../components';
+
 const PlayScreen = () => {
-  return <div>Play</div>;
+  return <GameBoard />;
 };
 export default PlayScreen;
