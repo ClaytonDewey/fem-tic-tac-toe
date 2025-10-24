@@ -87,15 +87,34 @@
     --btn-color-disabled: #6d8f91;
   }
 
-  &.active {
-    height: rem(54);
-    width: rem(131);
+  &-choice {
+    background-color: transparent;
     @include flex-shrink(0);
-    background-color: var(--clr-neutral-300);
+    width: 50%;
+    height: rem(54);
 
-    svg path {
-      stroke: var(--clr-neutral-500);
-      fill: var(--clr-neutral-500);
+    svg {
+      fill: var(--clr-neutral-300);
+    }
+
+    &.active {
+      background-color: var(--clr-neutral-300);
+
+      svg {
+        fill: var(--clr-neutral-700);
+
+        path {
+          stroke: currentColor;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: var(--clr-neutral-300) !important;
+
+      &:not(.active) {
+        background-color: var(--clr-neutral-500) !important;
+      }
     }
   }
 }

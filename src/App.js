@@ -3,10 +3,12 @@ import { StartScreen, PlayScreen } from './pages/';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<StartScreen />} />
-      <Route path='/play' element={<PlayScreen />} />
-    </Routes>
+    <div className='App'>
+      <Routes>
+        <Route path='/' element={<StartScreen />} />
+        <Route path='/play' element={<PlayScreen />} />
+      </Routes>
+    </div>
   );
 }
 

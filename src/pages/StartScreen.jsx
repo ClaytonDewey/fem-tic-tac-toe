@@ -1,26 +1,34 @@
-import { Button } from '../components';
+import { useState } from 'react';
+import { Button, IconChoice } from '../components';
 import { Icon } from '../svg';
 
 const StartScreen = () => {
+  const [playerIcon, setPlayerIcon] = useState('O');
+  const icons = ['X', 'O'];
+
   return (
-    <div className='App'>
+    <div className='start'>
       <Icon name='logo' />
-      <div className='card start'>
+      <div className='card'>
         <h1>pick player 1&apos;s mark</h1>
         <div className='btn-container'>
-          <Button className='btn'>
-            <Icon name='X' />
-            <span className='sr-only'>X</span>
-          </Button>
-          <Button className='btn active'>
-            <Icon name='o-outline' />
-            <span className='sr-only'>O</span>
-          </Button>
+          {icons.map((icon) => (
+            <IconChoice
+              key={icon}
+              icon={icon}
+              selected={playerIcon === icon}
+              onSelect={setPlayerIcon}
+            />
+          ))}
         </div>
         <p>remember : x goes first</p>
       </div>
-      <Button className='btn btn-yellow'>New Game (vs CPU)</Button>
-      <Button className='btn btn-blue'>New Game (vs Player)</Button>
+      <Button type='button' className='btn btn-yellow'>
+        New Game (vs CPU)
+      </Button>
+      <Button type='button' className='btn btn-blue'>
+        New Game (vs Player)
+      </Button>
     </div>
   );
 };
