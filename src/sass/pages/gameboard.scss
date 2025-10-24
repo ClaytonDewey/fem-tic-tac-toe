@@ -17,3 +17,25 @@
     }
   }
 }
+
+.turn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(40);
+  width: rem(96);
+  background-color: var(--clr-neutral-500);
+  color: var(--clr-neutral-300);
+  border-radius: rem(5);
+  font-size: var(--fs-md);
+  text-transform: uppercase;
+  font-weight: var(--fw-bold);
+  box-shadow: 0 4px 0 0 #10212a;
+
+  svg {
+    height: rem(16);
+    width: rem(16);
+    fill: currentColor;
+    margin-right: rem(8);
+  }
+}

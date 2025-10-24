@@ -13,7 +13,7 @@
   border: none;
   color: inherit;
   height: rem(48);
-  width: 100%;
+  padding-inline: rem(16);
   text-transform: uppercase;
 
   /* Default values (overridden per variant) */
@@ -76,6 +76,18 @@
   }
 
   &-blue {
+    --btn-bg: var(--clr-blue-500);
+    --btn-shadow: #118c87;
+    --btn-bg-hover: var(--clr-blue-300);
+    --btn-shadow-hover: #0f7b75;
+    --btn-bg-active: var(--clr-blue-300);
+    --btn-shadow-active: #0c6661;
+    --btn-bg-disabled: #a9dce1;
+    --btn-shadow-disabled: #7bb1b5;
+    --btn-color-disabled: #6d8f91;
+  }
+
+  &-secondary {
     --btn-bg: var(--clr-blue-500);
     --btn-shadow: #118c87;
     --btn-bg-hover: var(--clr-blue-300);
