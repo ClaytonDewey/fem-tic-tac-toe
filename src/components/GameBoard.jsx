@@ -1,4 +1,11 @@
+import { GameHeader } from '.';
+
 const GameBoard = () => {
-  return <div>GameBoard</div>;
+  return (
+    <>
+      <GameHeader />
+      <p>Gameboard</p>
+    </>
+  );
 };
 export default GameBoard;

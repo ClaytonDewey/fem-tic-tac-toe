@@ -1,0 +1,7 @@
+@use '../util' as *;
+
+.header {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include align-items(center);
+}
