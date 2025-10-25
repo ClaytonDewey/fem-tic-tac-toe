@@ -19,6 +19,7 @@
   /* Default values (overridden per variant) */
   --btn-bg: transparent;
   --btn-color: var(--clr-neutral-700);
+  --btn-fill: var(--clr-neutral-500);
   --btn-shadow: none;
   --btn-bg-hover: var(--btn-bg);
   --btn-shadow-hover: var(--btn-shadow);
@@ -27,6 +28,7 @@
   --btn-bg-disabled: #dcdcdc;
   --btn-shadow-disabled: #a8a8a8;
   --btn-color-disabled: #7a7a7a;
+  --btn-fill-disabled: #1f3641;
   --btn-weight: var(--fw-bold);
   --btn-size: var(--fs-md);
   --btn-letter-spacing: #{rem(1)};
@@ -37,6 +39,10 @@
   font-size: var(--btn-size);
   letter-spacing: var(--btn-letter-spacing);
   box-shadow: 0 8px 0 0 var(--btn-shadow);
+
+  svg {
+    fill: var(--btn-fill);
+  }
 
   /* Hover */
   &:hover:not(:disabled) {
@@ -60,6 +66,10 @@
     color: var(--btn-color-disabled);
     opacity: 0.8;
     transform: none;
+
+    svg {
+      fill: var(--btn-fill-disabled);
+    }
   }
 
   /* Variants override only the variables */
@@ -88,15 +98,47 @@
   }
 
   &-secondary {
-    --btn-bg: var(--clr-blue-500);
-    --btn-shadow: #118c87;
-    --btn-bg-hover: var(--clr-blue-300);
-    --btn-shadow-hover: #0f7b75;
-    --btn-bg-active: var(--clr-blue-300);
-    --btn-shadow-active: #0c6661;
-    --btn-bg-disabled: #a9dce1;
-    --btn-shadow-disabled: #7bb1b5;
-    --btn-color-disabled: #6d8f91;
+    --btn-bg: var(--clr-neutral-300);
+    --btn-shadow: #6b8997;
+    --btn-bg-hover: var(--clr-neutral-100);
+    --btn-shadow-hover: #8ca9b6;
+    --btn-bg-active: var(--clr-neutral-100);
+    --btn-shadow-active: #56707c;
+    --btn-bg-disabled: #d7e7ee;
+    --btn-shadow-disabled: #a5c6d5;
+    --btn-fill-disabled: #395e6f;
+  }
+
+  &-tile {
+    height: 100%;
+    --btn-bg: var(--clr-neutral-500);
+    --btn-shadow: #10212a;
+    --btn-bg-hover: #27424f;
+    --btn-shadow-hover: rgb(25, 49, 62);
+    --btn-bg-active: var(--clr-neutral-500);
+    --btn-shadow-active: #10212a;
+    --btn-bg-disabled: var(--clr-neutral-500);
+    --btn-shadow-disabled: #a10212a5c6d5;
+
+    &.yellow {
+      svg {
+        fill: var(--clr-yellow-500);
+      }
+    }
+
+    &.blue {
+      svg {
+        fill: var(--clr-blue-500);
+      }
+    }
+
+    svg {
+      height: rem(40);
+
+      @include breakpoint(medium) {
+        height: rem(64);
+      }
+    }
   }
 
   &-choice {

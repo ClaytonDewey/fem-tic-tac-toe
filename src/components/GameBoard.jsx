@@ -1,10 +1,10 @@
-import { GameHeader } from '.';
+import { GameHeader, GameGrid } from '.';
 
 const GameBoard = () => {
   return (
     <>
       <GameHeader />
-      <p>Gameboard</p>
+      <GameGrid />
     </>
   );
 };

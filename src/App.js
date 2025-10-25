@@ -57,9 +57,6 @@ function App() {
       </div>
 
       <div className={`game__board ${showBoard ? 'fade-in' : ''}`}>
-        <p>
-          {playerIcon} - {gameMode}
-        </p>
         <GameBoard />
       </div>
     </div>

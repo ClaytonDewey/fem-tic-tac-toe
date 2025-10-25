@@ -15,6 +15,20 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    &-grid {
+      margin-top: rem(64);
+      display: grid;
+      grid-template-columns: repeat(3, 96px);
+      grid-template-rows: repeat(3, 96px);
+      grid-column-gap: 20px;
+      grid-row-gap: 20px;
+
+      @include breakpoint(medium) {
+        grid-template-columns: repeat(3, 140px);
+        grid-template-rows: repeat(3, 140px);
+      }
+    }
   }
 }
 

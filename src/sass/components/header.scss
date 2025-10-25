@@ -4,4 +4,8 @@
   @include flexbox;
   @include justify-content(space-between);
   @include align-items(center);
+
+  svg {
+    height: rem(32);
+  }
 }
