@@ -1,12 +1,13 @@
 import { Button } from '.';
 import { Icon } from '../svg';
 
-const GameTile = ({ icon }) => {
+const GameTile = ({ value, onSquareClick }) => {
   return (
     <Button
       type='button'
-      className={`btn btn-tile ${icon === 'O' ? 'blue' : 'yellow'}`}>
-      {icon && <Icon name={icon} />}
+      className={`btn btn-tile ${value === 'O' ? 'blue' : 'yellow'}`}
+      onClick={onSquareClick}>
+      {value && <Icon name={value} />}
     </Button>
   );
 };
