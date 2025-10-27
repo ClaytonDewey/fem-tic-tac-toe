@@ -17,7 +17,7 @@ const GameBoard = () => {
 
   return (
     <>
-      <GameHeader />
+      <GameHeader xIsNext={xIsNext} />
       <GameGrid
         xIsNext={xIsNext}
         squares={currentSquares}
