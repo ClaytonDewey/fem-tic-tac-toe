@@ -4,3 +4,4 @@ export { default as GameGrid } from './GameGrid';
 export { default as GameHeader } from './GameHeader';
 export { default as GameTile } from './GameTile';
 export { default as IconChoice } from './IconChoice';
+export { default as Modal } from './Modal';
