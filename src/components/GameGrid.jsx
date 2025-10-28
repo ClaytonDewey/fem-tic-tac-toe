@@ -1,28 +1,22 @@
 import { Button, GameTile, Modal } from '.';
 import { Icon } from '../svg';
-import { calculateStatus, calculateTurns, calculateWinner } from '../utils';
-import { useState } from 'react';
+import useGameStore from '../store/useGameStore';
 
-const GameGrid = ({ xIsNext, squares, onPlay }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const toggleModal = () => setIsModalVisible(!isModalVisible);
-  const winner = calculateWinner(squares);
-  const turns = calculateTurns(squares);
-  const player = xIsNext ? 'X' : 'O';
-  const status = calculateStatus(winner, turns, player);
+const GameGrid = () => {
+  const { currentSquares, makeMove, gameState } = useGameStore();
+
+  const squares = currentSquares();
+  const { winner, turns, status, isDraw, isGameOver } = gameState();
 
   const handleClick = (i) => {
-    if (squares[i] || winner) return;
-    const nextSquares = squares.slice();
-    nextSquares[i] = player;
-    onPlay(nextSquares);
+    makeMove(i);
   };
 
   const renderContent = () => {
     return (
       <>
         <div className='modal__content-text'>
-          <h2 className={`ie ${winner === 'X' ? 'yellow' : 'blue'}`}>
+          <h2 className={`${winner === 'X' ? 'yellow' : 'blue'}`}>
             <Icon name={winner} /> takes the round
           </h2>
         </div>
@@ -33,10 +27,10 @@ const GameGrid = ({ xIsNext, squares, onPlay }) => {
   const renderActions = () => {
     return (
       <div className='btn-container'>
-        <Button onClick={toggleModal} className='btn btn-secondary'>
+        <Button type='button' className='btn btn-secondary'>
           Quit
         </Button>
-        <Button onClick={toggleModal} className='btn btn-yellow'>
+        <Button type='button' className='btn btn-yellow'>
           Next Round
         </Button>
       </div>
@@ -55,12 +49,12 @@ const GameGrid = ({ xIsNext, squares, onPlay }) => {
           />
         ))}
       </div>
-      {isModalVisible && (
+
+      {isGameOver && (
         <Modal
           title={status}
           content={renderContent()}
           actions={renderActions()}
-          onDismiss={() => toggleModal()}
         />
       )}
     </>
