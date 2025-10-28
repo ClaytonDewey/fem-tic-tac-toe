@@ -27,7 +27,7 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <>
       <div className={`start ${gameMode ? 'hidden' : ''}`}>
         <Icon name='logo' />
         <div className='card'>
@@ -59,7 +59,7 @@ function App() {
       <div className={`game__board ${showBoard ? 'fade-in' : ''}`}>
         <GameBoard />
       </div>
-    </div>
+    </>
   );
 }
 

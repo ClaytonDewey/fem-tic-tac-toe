@@ -1,6 +1,10 @@
 @use '../util' as *;
 
 .start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +17,7 @@
   transition: opacity var(--fade-duration) var(--fade-ease),
     transform var(--fade-duration) var(--fade-ease);
   opacity: 1;
-  transform: translateY(0);
+  z-index: 9000;
 
   .btn-yellow,
   .btn-blue {
