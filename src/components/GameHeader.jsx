@@ -1,7 +1,10 @@
 import { Icon } from '../svg';
 import { Button } from '.';
+import useGameStore from '../store/useGameStore';
 
-const GameHeader = ({ currentPlayer, resetGame }) => {
+const GameHeader = () => {
+  const currentPlayer = useGameStore((state) => (state.xIsNext ? 'X' : 'O'));
+  const { resetGame } = useGameStore();
   return (
     <header className='header'>
       <Icon name='logo' />

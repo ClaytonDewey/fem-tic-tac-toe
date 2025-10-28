@@ -124,11 +124,27 @@
       svg {
         fill: var(--clr-yellow-500);
       }
+
+      &.winner {
+        background-color: var(--clr-yellow-300);
+
+        svg {
+          fill: var(--clr-neutral-900);
+        }
+      }
     }
 
     &.blue {
       svg {
         fill: var(--clr-blue-500);
+      }
+
+      &.winner {
+        background-color: var(--clr-blue-300);
+
+        svg {
+          fill: var(--clr-neutral-900);
+        }
       }
     }
 

@@ -15,11 +15,42 @@
       align-items: center;
       justify-content: center;
       position: fixed;
+      text-align: center;
     }
   }
   &__body {
     width: 100%;
     padding: rem(20);
     background-color: var(--clr-neutral-700);
+
+    h2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      font-size: var(--fs-xlg);
+      font-weight: var(--fw-bold);
+      letter-spacing: rem(1.5);
+
+      svg {
+        height: rem(30);
+        width: rem(30);
+        margin-inline-end: rem(8);
+      }
+
+      &.yellow {
+        color: var(--clr-yellow-500);
+        svg {
+          fill: var(--clr-yellow-500);
+        }
+      }
+
+      &.blue {
+        color: var(--clr-blue-500);
+        svg {
+          fill: var(--clr-blue-500);
+        }
+      }
+    }
   }
 }

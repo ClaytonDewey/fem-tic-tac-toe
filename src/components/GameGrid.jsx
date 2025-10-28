@@ -3,10 +3,10 @@ import { Icon } from '../svg';
 import useGameStore from '../store/useGameStore';
 
 const GameGrid = () => {
-  const { currentSquares, makeMove, gameState } = useGameStore();
+  const { currentSquares, makeMove, resetGame, gameState } = useGameStore();
 
   const squares = currentSquares();
-  const { winner, turns, status, isDraw, isGameOver } = gameState();
+  const { winner, winningLine, status, isGameOver } = gameState();
 
   const handleClick = (i) => {
     makeMove(i);
@@ -16,7 +16,7 @@ const GameGrid = () => {
     return (
       <>
         <div className='modal__content-text'>
-          <h2 className={`${winner === 'X' ? 'yellow' : 'blue'}`}>
+          <h2 className={`${winner === 'X' ? 'blue' : 'yellow'}`}>
             <Icon name={winner} /> takes the round
           </h2>
         </div>
@@ -30,7 +30,7 @@ const GameGrid = () => {
         <Button type='button' className='btn btn-secondary'>
           Quit
         </Button>
-        <Button type='button' className='btn btn-yellow'>
+        <Button type='button' className='btn btn-yellow' onClick={resetGame}>
           Next Round
         </Button>
       </div>
@@ -45,17 +45,14 @@ const GameGrid = () => {
           <GameTile
             key={squareIndex}
             value={square}
+            isWinning={winningLine.includes(squareIndex)}
             onSquareClick={() => handleClick(squareIndex)}
           />
         ))}
       </div>
 
       {isGameOver && (
-        <Modal
-          title={status}
-          content={renderContent()}
-          actions={renderActions()}
-        />
+        <Modal content={renderContent()} actions={renderActions()} />
       )}
     </>
   );

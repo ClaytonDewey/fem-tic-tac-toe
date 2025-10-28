@@ -1,5 +1,7 @@
 export const getGameState = (squares, currentPlayer) => {
-  const winner = calculateWinner(squares);
+  const winnerResult = calculateWinner(squares);
+  const winner = winnerResult?.winner || null;
+  const winningLine = winnerResult?.line || [];
   const turns = calculateTurns(squares);
   const status = calculateStatus(winner, turns, currentPlayer);
 
@@ -8,6 +10,7 @@ export const getGameState = (squares, currentPlayer) => {
 
   return {
     winner,
+    winningLine,
     turns,
     status,
     isDraw,
@@ -30,7 +33,10 @@ export const calculateWinner = (squares) => {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return {
+        winner: squares[a],
+        line: lines[i],
+      };
     }
   }
   return null;
