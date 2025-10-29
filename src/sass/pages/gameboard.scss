@@ -8,6 +8,7 @@
     position: absolute;
     opacity: 0;
     top: 50%;
+    padding-inline: rem(24);
     transform: translate(1rem, -50%);
     transition: opacity var(--fade-duration) var(--fade-ease),
       transform var(--fade-duration) var(--fade-ease);
