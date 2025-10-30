@@ -1,17 +1,22 @@
+import useGameStore from '../store/useGameStore';
+
 const ScoreCard = () => {
+  const { scores, playerIcon } = useGameStore();
+
+  // Determine player labels based on chosen icon
+  const player1Icon = playerIcon;
+
   return (
     <div className='scorecard__wrapper'>
       <div className='scorecard card-x'>
-        x (p2)
-        <span>14</span>
+        X ({player1Icon === 'X' ? 'P1' : 'P2'})<span>{scores.X}</span>
       </div>
       <div className='scorecard card-draw'>
         ties
-        <span>32</span>
+        <span>{scores.draws}</span>
       </div>
       <div className='scorecard card-o'>
-        o (p1)
-        <span>11</span>
+        O ({player1Icon === 'O' ? 'P1' : 'P2'})<span>{scores.O}</span>
       </div>
     </div>
   );

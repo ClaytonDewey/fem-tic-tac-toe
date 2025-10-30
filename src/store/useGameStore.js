@@ -12,6 +12,7 @@ const useGameStore = create(
         playerIcon: '', // Player 1's chosen icon (X or O)
         gameMode: null, // 'player' or 'cpu'
         isPlaying: false, // Whether a game is currently active
+        scores: { X: 0, O: 0, draws: 0 }, // Track wins and draws
       },
       (set, get) => ({
         // --- Derived state as FUNCTIONS (not getters) ---
@@ -80,10 +81,22 @@ const useGameStore = create(
         },
 
         clearBoard: () => {
+          const { gameState, scores } = get();
+          const { winner, isDraw } = gameState();
+
+          // Update scores before clearing board
+          let newScores = { ...scores };
+          if (winner) {
+            newScores[winner] += 1;
+          } else if (isDraw) {
+            newScores.draws += 1;
+          }
+
           set({
             history: [Array(9).fill(null)],
             currentMove: 0,
             xIsNext: true,
+            scores: newScores,
           });
         },
 
@@ -106,6 +119,7 @@ const useGameStore = create(
             isPlaying: false,
             gameMode: null,
             playerIcon: '',
+            scores: { X: 0, O: 0, draws: 0 },
           });
         },
 
@@ -123,6 +137,7 @@ const useGameStore = create(
         playerIcon: state.playerIcon,
         gameMode: state.gameMode,
         isPlaying: state.isPlaying,
+        scores: state.scores,
       }),
     }
   )
