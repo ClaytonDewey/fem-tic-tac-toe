@@ -38,7 +38,7 @@
   font-weight: var(--btn-weight);
   font-size: var(--btn-size);
   letter-spacing: var(--btn-letter-spacing);
-  box-shadow: 0 8px 0 0 var(--btn-shadow);
+  box-shadow: inset 0 -8px 0 0 var(--btn-shadow);
 
   svg {
     fill: var(--btn-fill);
@@ -47,13 +47,13 @@
   /* Hover */
   &:hover:not(:disabled) {
     background-color: var(--btn-bg-hover);
-    box-shadow: 0 8px 0 0 var(--btn-shadow-hover);
+    box-shadow: inset 0 -8px 0 0 var(--btn-shadow-hover);
   }
 
   /* Active/Pressed */
   &:active:not(:disabled) {
     background-color: var(--btn-bg-active);
-    box-shadow: 0 4px 0 0 var(--btn-shadow-active);
+    box-shadow: inset 0 -4px 0 0 var(--btn-shadow-active);
     transform: translateY(4px);
   }
 
@@ -62,7 +62,7 @@
   &[aria-disabled='true'] {
     cursor: not-allowed;
     background-color: var(--btn-bg-disabled);
-    box-shadow: 0 8px 0 0 var(--btn-shadow-disabled);
+    box-shadow: inset 0 -8px 0 0 var(--btn-shadow-disabled);
     color: var(--btn-color-disabled);
     opacity: 0.8;
     transform: none;
@@ -107,6 +107,16 @@
     --btn-bg-disabled: #d7e7ee;
     --btn-shadow-disabled: #a5c6d5;
     --btn-fill-disabled: #395e6f;
+    border-radius: rem(5);
+    height: rem(40);
+    width: rem(40);
+    padding: 0;
+    box-shadow: inset 0 -4px 0 0 var(--btn-shadow);
+
+    svg {
+      height: rem(15) !important;
+      width: rem(15) !important;
+    }
   }
 
   &-tile {
