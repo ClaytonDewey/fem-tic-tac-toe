@@ -17,6 +17,8 @@ function App() {
   useEffect(() => {
     if (isPlaying) {
       setShowBoard(true);
+    } else {
+      setShowBoard(false);
     }
     // Enable buttons if player icon is already selected (from localStorage)
     if (playerIcon) {
