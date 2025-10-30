@@ -16,9 +16,9 @@ const GameGrid = () => {
     return (
       <>
         <div className='modal__content-text'>
-          <h2 className={`${winner === 'X' ? 'blue' : 'yellow'}`}>
+          <h3 className={`${winner === 'X' ? 'blue' : 'yellow'}`}>
             <Icon name={winner} /> takes the round
-          </h2>
+          </h3>
         </div>
       </>
     );
@@ -39,7 +39,6 @@ const GameGrid = () => {
 
   return (
     <>
-      <p>{status}</p>
       <div className='game__board-grid'>
         {squares.map((square, squareIndex) => (
           <GameTile
@@ -52,7 +51,11 @@ const GameGrid = () => {
       </div>
 
       {isGameOver && (
-        <Modal content={renderContent()} actions={renderActions()} />
+        <Modal
+          title='Player 1 Wins!'
+          content={renderContent()}
+          actions={renderActions()}
+        />
       )}
     </>
   );
