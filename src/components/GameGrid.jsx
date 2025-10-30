@@ -3,10 +3,11 @@ import { Icon } from '../svg';
 import useGameStore from '../store/useGameStore';
 
 const GameGrid = () => {
-  const { currentSquares, makeMove, resetGame, gameState } = useGameStore();
+  const { currentSquares, makeMove, clearBoard, quitSession, gameState } =
+    useGameStore();
 
   const squares = currentSquares();
-  const { winner, winningLine, status, isGameOver } = gameState();
+  const { winner, winningLine, isGameOver } = gameState();
 
   const handleClick = (i) => {
     makeMove(i);
@@ -27,10 +28,13 @@ const GameGrid = () => {
   const renderActions = () => {
     return (
       <div className='btn-container'>
-        <Button type='button' className='btn btn-secondary'>
+        <Button
+          type='button'
+          className='btn btn-secondary'
+          onClick={quitSession}>
           Quit
         </Button>
-        <Button type='button' className='btn btn-yellow' onClick={resetGame}>
+        <Button type='button' className='btn btn-yellow' onClick={clearBoard}>
           Next Round
         </Button>
       </div>

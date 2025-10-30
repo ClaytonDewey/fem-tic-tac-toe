@@ -4,14 +4,14 @@ import useGameStore from '../store/useGameStore';
 
 const GameHeader = () => {
   const currentPlayer = useGameStore((state) => (state.xIsNext ? 'X' : 'O'));
-  const { resetGame } = useGameStore();
+  const { undoMove } = useGameStore();
   return (
     <header className='header'>
       <Icon name='logo' />
       <div className='turn'>
         <Icon name={currentPlayer} /> Turn
       </div>
-      <Button type='button' className='btn btn-secondary' onClick={resetGame}>
+      <Button type='button' className='btn btn-secondary' onClick={undoMove}>
         <Icon name='restart' />
       </Button>
     </header>
