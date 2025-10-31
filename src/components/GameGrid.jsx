@@ -7,7 +7,7 @@ const GameGrid = () => {
     useGameStore();
 
   const squares = currentSquares();
-  const { winner, winningLine, isGameOver } = gameState();
+  const { status, winner, winningLine, isDraw, isGameOver } = gameState();
 
   const handleClick = (i) => {
     makeMove(i);
@@ -16,9 +16,22 @@ const GameGrid = () => {
   const renderContent = () => {
     return (
       <>
+        <div className='modal__header'>
+          <h2>{status}</h2>
+        </div>
+
         <div className='modal__content-text'>
-          <h3 className={`${winner === 'X' ? 'blue' : 'yellow'}`}>
-            <Icon name={winner} /> takes the round
+          <h3
+            className={`${
+              winner === 'X' ? ('blue' ? winner === 'O' : 'yellow') : ''
+            }`}>
+            {isDraw ? (
+              <>Round Tied</>
+            ) : (
+              <>
+                <Icon name={winner} /> takes the round
+              </>
+            )}
           </h3>
         </div>
       </>
@@ -55,11 +68,7 @@ const GameGrid = () => {
       </div>
 
       {isGameOver && (
-        <Modal
-          title='Player 1 Wins!'
-          content={renderContent()}
-          actions={renderActions()}
-        />
+        <Modal content={renderContent()} actions={renderActions()} />
       )}
     </>
   );
