@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 const Modal = (props) => {
-  const { title, content, actions, onDismiss, isOpen } = props;
+  const { content, actions, onDismiss, isOpen } = props;
 
   useEffect(() => {
     function keyListener(e) {
@@ -54,9 +54,6 @@ const Modal = (props) => {
         id='heading'
         onClick={(e) => e.stopPropagation()}
         className='modal__body'>
-        <div className='modal__header'>
-          <h2>{title}</h2>
-        </div>
         <div id='content' className='modal__content'>
           {content}
         </div>
