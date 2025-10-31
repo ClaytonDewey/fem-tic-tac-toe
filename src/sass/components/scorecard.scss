@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   height: 100%;
   width: rem(96);
   border-radius: rem(10);
@@ -35,5 +36,12 @@
 
   &.card-o {
     background-color: var(--clr-yellow-500);
+  }
+
+  @include breakpoint(medium) {
+    &__wrapper {
+      height: rem(72);
+    }
+    width: rem(140);
   }
 }
