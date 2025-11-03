@@ -3,11 +3,17 @@ import { Icon } from '../svg';
 import useGameStore from '../store/useGameStore';
 
 const GameGrid = () => {
-  const { currentSquares, makeMove, clearBoard, quitSession, gameState } =
-    useGameStore();
+  const {
+    currentSquares,
+    makeMove,
+    clearBoard,
+    quitSession,
+    gameState,
+    playerIcon,
+  } = useGameStore();
 
   const squares = currentSquares();
-  const { status, winner, winningLine, isDraw, isGameOver } = gameState();
+  const { winner, winningLine, isDraw, isGameOver } = gameState();
 
   const handleClick = (i) => {
     makeMove(i);
@@ -21,11 +27,23 @@ const GameGrid = () => {
   }
 
   const renderContent = () => {
+    // Determine the modal header message
+    let headerMessage = '';
+    if (isDraw) {
+      headerMessage = '';
+    } else if (winner === playerIcon) {
+      headerMessage = 'You Won!';
+    } else {
+      headerMessage = 'Oh no, you lost...';
+    }
+
     return (
       <>
-        <div className='modal__header'>
-          <h2>{status}</h2>
-        </div>
+        {headerMessage && (
+          <div className='modal__header'>
+            <h2>{headerMessage}</h2>
+          </div>
+        )}
 
         <div className='modal__content-text'>
           <h3 className={`${statusClass} ${isDraw ? 'draw' : ''}`}>
