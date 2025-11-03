@@ -24,6 +24,7 @@
   .btn-blue {
     width: 100%;
     border-radius: rem(15);
+    box-shadow: inset 0 -8px 0 0 var(--btn-shadow);
   }
 
   &.hidden {
