@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { combine, persist } from 'zustand/middleware';
 import { getGameState } from '../utils/getGameState';
+import { getCPUMove } from '../utils/cpuAI';
 
 const useGameStore = create(
   persist(
@@ -29,8 +30,15 @@ const useGameStore = create(
 
         // --- Actions ---
         makeMove: (index) => {
-          const { currentSquares, history, currentMove, xIsNext, gameState } =
-            get();
+          const {
+            currentSquares,
+            history,
+            currentMove,
+            xIsNext,
+            gameState,
+            gameMode,
+            playerIcon,
+          } = get();
           const squares = currentSquares();
           const state = gameState();
 
@@ -49,6 +57,51 @@ const useGameStore = create(
             currentMove: nextHistory.length - 1,
             xIsNext: !xIsNext,
           });
+
+          // Handle CPU move if in CPU mode and it's CPU's turn next
+          if (gameMode === 'cpu' && !state.isGameOver) {
+            const cpuIcon = playerIcon === 'X' ? 'O' : 'X';
+            const isNowCPUTurn = xIsNext ? cpuIcon === 'O' : cpuIcon === 'X';
+
+            if (isNowCPUTurn) {
+              // Delay CPU move for better UX
+              setTimeout(() => {
+                const currentState = get();
+                const currentSquares = currentState.currentSquares();
+                const currentGameState = currentState.gameState();
+
+                // Check if game is still active
+                if (!currentGameState.isGameOver) {
+                  const cpuMoveIndex = getCPUMove(
+                    currentSquares,
+                    cpuIcon,
+                    playerIcon
+                  );
+
+                  if (
+                    cpuMoveIndex !== null &&
+                    currentSquares[cpuMoveIndex] === null
+                  ) {
+                    const cpuSquares = [...currentSquares];
+                    cpuSquares[cpuMoveIndex] = cpuIcon;
+                    const cpuHistory = [
+                      ...currentState.history.slice(
+                        0,
+                        currentState.currentMove + 1
+                      ),
+                      cpuSquares,
+                    ];
+
+                    set({
+                      history: cpuHistory,
+                      currentMove: cpuHistory.length - 1,
+                      xIsNext: !currentState.xIsNext,
+                    });
+                  }
+                }
+              }, 500); // 500ms delay for CPU move
+            }
+          }
         },
 
         jumpTo: (move) => {
@@ -81,7 +134,7 @@ const useGameStore = create(
         },
 
         clearBoard: () => {
-          const { gameState, scores } = get();
+          const { gameState, scores, gameMode, playerIcon } = get();
           const { winner, isDraw } = gameState();
 
           // Update scores before clearing board
@@ -98,6 +151,29 @@ const useGameStore = create(
             xIsNext: true,
             scores: newScores,
           });
+
+          // If CPU mode and player chose O, CPU (X) goes first in new round
+          if (gameMode === 'cpu' && playerIcon === 'O') {
+            setTimeout(() => {
+              const currentState = get();
+              const squares = currentState.currentSquares();
+
+              if (squares.every((square) => square === null)) {
+                const cpuMoveIndex = getCPUMove(squares, 'X', 'O');
+                if (cpuMoveIndex !== null) {
+                  const cpuSquares = [...squares];
+                  cpuSquares[cpuMoveIndex] = 'X';
+                  const cpuHistory = [cpuSquares];
+
+                  set({
+                    history: cpuHistory,
+                    currentMove: 0,
+                    xIsNext: false, // Now it's O's turn (player)
+                  });
+                }
+              }
+            }, 500);
+          }
         },
 
         setPlayerIcon: (icon) => {
@@ -105,10 +181,34 @@ const useGameStore = create(
         },
 
         setGameMode: (mode) => {
+          const { playerIcon } = get();
           set({
             gameMode: mode,
             isPlaying: true,
           });
+
+          // If CPU mode and player chose O, CPU (X) goes first
+          if (mode === 'cpu' && playerIcon === 'O') {
+            setTimeout(() => {
+              const currentState = get();
+              const squares = currentState.currentSquares();
+
+              if (squares.every((square) => square === null)) {
+                const cpuMoveIndex = getCPUMove(squares, 'X', 'O');
+                if (cpuMoveIndex !== null) {
+                  const cpuSquares = [...squares];
+                  cpuSquares[cpuMoveIndex] = 'X';
+                  const cpuHistory = [cpuSquares];
+
+                  set({
+                    history: cpuHistory,
+                    currentMove: 0,
+                    xIsNext: false, // Now it's O's turn (player)
+                  });
+                }
+              }
+            }, 500);
+          }
         },
 
         quitSession: () => {
