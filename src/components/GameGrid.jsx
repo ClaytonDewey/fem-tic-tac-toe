@@ -13,6 +13,13 @@ const GameGrid = () => {
     makeMove(i);
   };
 
+  let statusClass = '';
+  if (winner === 'X') {
+    statusClass = 'blue';
+  } else if (winner === 'O') {
+    statusClass = 'yellow';
+  }
+
   const renderContent = () => {
     return (
       <>
@@ -21,10 +28,7 @@ const GameGrid = () => {
         </div>
 
         <div className='modal__content-text'>
-          <h3
-            className={`${
-              winner === 'X' ? ('blue' ? winner === 'O' : 'yellow') : ''
-            }`}>
+          <h3 className={`${statusClass} ${isDraw ? 'draw' : ''}`}>
             {isDraw ? (
               <>Round Tied</>
             ) : (
