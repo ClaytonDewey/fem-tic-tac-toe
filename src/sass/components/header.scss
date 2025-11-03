@@ -10,4 +10,8 @@
   svg {
     height: rem(32);
   }
+
+  @include breakpoint(medium) {
+    max-width: rem(460);
+  }
 }

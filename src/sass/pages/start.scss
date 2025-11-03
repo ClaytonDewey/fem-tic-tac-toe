@@ -31,4 +31,8 @@
     transform: translate(1rem, -50%);
     pointer-events: none;
   }
+
+  @include breakpoint(medium) {
+    padding-inline: 0;
+  }
 }

@@ -35,6 +35,12 @@
       }
     }
   }
+
+  @include breakpoint(medium) {
+    &__board {
+      padding-inline: 0;
+    }
+  }
 }
 
 .turn {
