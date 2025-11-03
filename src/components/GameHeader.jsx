@@ -11,7 +11,7 @@ const GameHeader = () => {
       <div className='turn'>
         <Icon name={currentPlayer} /> Turn
       </div>
-      <Button type='button' className='btn btn-secondary' onClick={undoMove}>
+      <Button type='button' className='btn btn-reset' onClick={undoMove}>
         <Icon name='restart' />
       </Button>
     </header>
