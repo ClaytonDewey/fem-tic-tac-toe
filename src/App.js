@@ -23,6 +23,8 @@ function App() {
     // Enable buttons if player icon is already selected (from localStorage)
     if (playerIcon) {
       setIsDisabled(false);
+    } else {
+      setIsDisabled(true);
     }
   }, [isPlaying, playerIcon]);
 
